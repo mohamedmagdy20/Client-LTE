@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RequestController;
+use App\Http\Controllers\AdminController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,4 +19,10 @@ Route::get('/', [RequestController::class,'index'])->name('index');
 Route::post('request/store',[RequestController::class,'store'])->name('request.store');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+Route::middleware(['auth'])->prefix('dashboard')->group(function(){
+    Route::get('admin',[AdminController::class,'index'])->name('admin.index');
+    Route::get('approve/{id}',[AdminController::class,'Approve'])->name('admin.approve');
+    Route::get('block/{id}',[AdminController::class,'Block'])->name('admin.block');
+
+});
 Auth::routes();

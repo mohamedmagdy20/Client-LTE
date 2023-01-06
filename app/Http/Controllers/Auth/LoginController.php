@@ -28,6 +28,13 @@ class LoginController extends Controller
      */
     protected $redirectTo = RouteServiceProvider::HOME;
 
+    // protected function authenticated(Request $request, $user)
+    // {
+    //     if ($user->approved == 0) {
+    //         Auth::logout();
+    //         return route('login')->with('success', 'your email is not submited .. Check your Email');
+    //     }
+    // }
     /**
      * Create a new controller instance.
      *

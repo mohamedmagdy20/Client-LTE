@@ -1,22 +1,22 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Requests;
+
 use App\Mail\Subscribe;
 use Illuminate\Support\Facades\Mail;
-
 class RequestController extends Controller
 {
+    
     //
-
     public function index()
+
     {
         return view('requests.index');
     }
-
     public function store(Request $request)
+
     {
         // Validations
             $request->validate([
@@ -42,7 +42,7 @@ class RequestController extends Controller
                 $request = Requests::create($data);
                 if($request)
                 {
-                    Mail::to($email)->send(new Subscribe($email));
+                    Mail::to($email)->send(new Subscribe($email,$request->student_name,$request->student_university_id));
                     return back()->with('success', 'Report Submited .. Check your Email');
                 }else{
                     return back()->with('error', 'Error');
@@ -52,7 +52,7 @@ class RequestController extends Controller
                 $request = Requests::create($data);
                 if($request)
                 {
-                    Mail::to($email)->send(new Subscribe($email));
+                    Mail::to($email)->send(new Subscribe($email,$request->student_name,$request->student_university_id));
                     return back()->with('success', 'Report Submited .. Check your Email');
                 }else{
                     return back()->with('error', 'OOPS!');

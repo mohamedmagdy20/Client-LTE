@@ -13,14 +13,18 @@ class Subscribe extends Mailable
 {
     use Queueable, SerializesModels;
     public $email;
+    public $student;
+    public $code;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($email)
+    public function __construct($email,$student,$code)
     {
         $this->email = $email;
+        $this->student =$student;
+        $this->code  = $code;
     }
     /**
      * Build the message.
@@ -30,6 +34,9 @@ class Subscribe extends Mailable
     public function build()
     {
         return $this->subject('Thank you for subscribing to our newsletter')
-        ->markdown('emails.subscribers');
+        ->markdown('emails.subscribers',[
+            'student'=>$this->student,
+            'code'=>$this->code
+        ]);
     }
 }

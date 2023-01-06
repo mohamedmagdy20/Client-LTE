@@ -10,7 +10,8 @@
           crossorigin="anonymous"/>
 
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
-
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet" />
+  
     @stack('third_party_stylesheets')
 
     @stack('page_css')
@@ -79,8 +80,21 @@
     </footer>
 </div>
 
-<script src="{{ mix('js/app.js') }}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
 
+
+<script src="{{ mix('js/app.js') }}"></script>
+<script>
+    $(document).ready(function() {
+        toastr.options.timeOut = 10000;
+        @if (Session::has('error'))
+            toastr.error('{{ Session::get('error') }}');
+        @elseif(Session::has('success'))
+            toastr.success('{{ Session::get('success') }}');
+        @endif
+    });
+
+</script>
 @stack('third_party_scripts')
 
 @stack('page_scripts')
