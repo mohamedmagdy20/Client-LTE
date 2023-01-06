@@ -18,7 +18,7 @@ class AdminController extends Controller
         $user = User::find($id);
         if($user)
         {
-            return view('users.edit',compact($user));   
+            return view('users.edit',compact('user'));   
         }else
         {
             return back()->with('error', 'User not Found');

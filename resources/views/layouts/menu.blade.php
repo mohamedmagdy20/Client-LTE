@@ -15,7 +15,7 @@
 
 
 <li class="nav-item">
-    <a href="{{ route('home') }}" class="nav-link {{ Request::is('home') ? 'active' : '' }}">
+    <a href="{{ route('manage.request.index') }}" class="nav-link {{ Request::is('dashboard/request') ? 'active' : '' }}">
         <i class="nav-icon fa fa-message"></i>
         <p>Requests</p>
     </a>
