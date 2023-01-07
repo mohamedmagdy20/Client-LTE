@@ -1,12 +1,8 @@
 <x-mail::message>
-# Introduction
-
-The body of your message.
-
-<x-mail::button :url="''">
-Button Text
-</x-mail::button>
-
+# From Collage 
+Dear {{$student}}
+we have Received your Report and here is our Replay.
+{{$responce}}
 Thanks,<br>
 {{ config('app.name') }}
 </x-mail::message>

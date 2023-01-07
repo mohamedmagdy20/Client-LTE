@@ -16,7 +16,7 @@
 
 <li class="nav-item">
     <a href="{{ route('manage.request.index') }}" class="nav-link {{ Request::is('dashboard/request') ? 'active' : '' }}">
-        <i class="nav-icon fa fa-message"></i>
+        <i class="nav-icon fa fa-box"></i>
         <p>Requests</p>
     </a>
 </li>

@@ -37,17 +37,21 @@ class RequestController extends Controller
                 $filename= date('YmdHi').$file->getClientOriginalName();
                 $file-> move(public_path('files'), $filename);
                 $data['image']= $filename;
-                $request = Requests::create($data);
+                $report_number = rand(10000,99999);
+                $allData = array_merge($data,['report_number'=>$report_number]);
+                $request = Requests::create($allData);
                 if($request)
                 {
-                    Mail::to($email)->send(new Subscribe($email,$request->student_name,$request->student_university_id));
+                    Mail::to($email)->send(new Subscribe($email,$request->student_name,$request->report_number));
                     return back()->with('success', 'Report Submited .. Check your Email');
                 }else{
                     return back()->with('error', 'Error');
                 }
             }
             else{
-                $request = Requests::create($data);
+                $report_number = rand(10000,99999);
+                $allData = array_merge($data,['report_number'=>$report_number]);
+                $request = Requests::create($allData);
                 if($request)
                 {
                     Mail::to($email)->send(new Subscribe($email,$request->student_name,$request->student_university_id));
@@ -57,4 +61,17 @@ class RequestController extends Controller
                 }
             }
     }
+
+    public function searchReport(Request $request)
+    {
+        $report = Requests::query()->where('report_number',$request->report_number)->first();  
+        // return $report;
+        return view('requests.search',compact('report'));
+    }
+
+    // public function searchResult(Request $request)
+    // {
+       
+    //     return view('requests.search',compact('report'));
+    // }
 }

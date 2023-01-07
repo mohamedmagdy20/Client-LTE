@@ -19,7 +19,7 @@ use App\Http\Controllers\MangeRequestController;
 Route::get('/', [RequestController::class,'index'])->name('index');
 Route::post('request/store',[RequestController::class,'store'])->name('request.store');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
+Route::get('request/search/',[RequestController::class,'searchReport'])->name('request.search');
 Route::middleware(['auth'])->prefix('dashboard')->group(function(){
     Route::get('admin',[AdminController::class,'index'])->name('admin.index');
     Route::get('approve/{id}',[AdminController::class,'Approve'])->name('admin.approve');
@@ -32,5 +32,6 @@ Route::middleware(['auth'])->prefix('dashboard')->group(function(){
     Route::get('request/show/{id}',[MangeRequestController::class,'show'])->name('manage.request.show');
     Route::get('responce/create/{id}',[MangeRequestController::class,'createRepsonce'])->name('responce.create');
     Route::post('reponce/add/{id}',[MangeRequestController::class,'makeResponce'])->name('responce.add');
+
 });
 Auth::routes();

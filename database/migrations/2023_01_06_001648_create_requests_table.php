@@ -26,6 +26,7 @@ return new class extends Migration
             $table->enum('status', ['Open','Closed'])->default('Closed');
             $table->boolean('urgent')->default(0)->change();
             $table->timestamp('closed_date')->nullable();
+            $table->string('report number');
             $table->timestamps();
         });
     }

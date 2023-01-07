@@ -2,7 +2,7 @@
 @section('content')
 <div class="pt-3">
     <div class="card w-75 m-auto  p-2">
-        <img class="card-img-top" src="{{asset('files/'.$request->image)}}" alt="Card image cap">
+        <img class="card-img-top w-25 m-auto" src="{{asset('files/'.$request->image)}}" alt="Card image cap">
         <div class="card-body ">
           <h3 class="text-center">{{$request->title}}</h3>
           <p class="card-text">{{$request->message}}</p>
@@ -18,7 +18,7 @@
 @if ($request->response == Null)
 <div class="card w-75 m-auto">
   <div class="card-body">
-   There is Not Responce Yet.
+   There is Not Responce yet.
   </div>
 </div>      
 @else
