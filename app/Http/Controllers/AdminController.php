@@ -46,7 +46,7 @@ class AdminController extends Controller
         if($user)
         {
             $user->approved = true;
-            $user->email_verified_at = time();
+            $user->email_verified_at = date('Y-m-d H:i:s');
             $user->save();
             return back()->with('success', 'User Updated');
         }else{
@@ -61,8 +61,6 @@ class AdminController extends Controller
         if($user)
         {
             $user->approved = false;
-            $user->email_verified_at = time();
-
             $user->save();
             return back()->with('success', 'User Updated');
         }else{

@@ -21,6 +21,7 @@
             <th>Student Name</th>
             <th>Student Code</th>
             <th>Student Email</th>
+            <th>Report Number</th>
             <th>Type</th>
             <th>Title</th>
             <th>Status</th>
@@ -36,6 +37,7 @@
                     <td>{{$request->student_name}}</td>
                     <td>{{$request->student_university_id}}</td>
                     <td>{{$request->student_email}}</td>
+                    <td>{{$request->report_number}}</td>
                     @if($request->type == 'Suggestion')
                         <td><span class="badge bg-success">{{$request->type}}</span></td>
                     @else                          
