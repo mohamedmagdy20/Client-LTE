@@ -49,7 +49,7 @@ class MangeRequestController extends Controller
             $requests->closed_date = date('Y-m-d H:i:s');
             $requests->status = 'Closed';
             $requests->save();
-            Mail::to($requests->student_email)->send(new Responce($requests->student_email));
+            Mail::to($requests->student_email)->send(new Responce($requests->student_email,$request->responce,$requests->student_name));
             return back()->with('success', 'Repsponce Created');
 
         }else{

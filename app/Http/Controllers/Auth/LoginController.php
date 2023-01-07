@@ -43,7 +43,7 @@ class LoginController extends Controller
         }
         else
         {
-            return back()->with('success', 'Your Email Dose Not Approved yet');
+            return back()->with('error', 'Your Email Dose Not Approved yet');
 
         }
     }
