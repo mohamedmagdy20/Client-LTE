@@ -5,7 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 class LoginController extends Controller
 {
     /*
@@ -28,13 +29,24 @@ class LoginController extends Controller
      */
     protected $redirectTo = RouteServiceProvider::HOME;
 
-    // protected function authenticated(Request $request, $user)
-    // {
-    //     if ($user->approved == 0) {
-    //         Auth::logout();
-    //         return route('login')->with('success', 'your email is not submited .. Check your Email');
-    //     }
-    // }
+    public function authenticate(Request $request)
+    {
+       $credentials = array(
+            'email' => $request->email,
+            'password' => $request->password,
+            'approved' => 1
+        );
+
+        if (Auth::attempt($credentials)) 
+        {
+            return redirect()->intended('home');
+        }
+        else
+        {
+            return back()->with('success', 'Your Email Dose Not Approved yet');
+
+        }
+    }
     /**
      * Create a new controller instance.
      *

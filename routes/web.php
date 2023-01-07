@@ -5,6 +5,7 @@ use App\Http\Controllers\RequestController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\MangeRequestController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +20,7 @@ use App\Http\Controllers\Auth\RegisterController;
 
 Route::get('/', [RequestController::class,'index'])->name('index');
 Route::post('user/register',[RegisterController::class,'RegisterAdmin'])->name('admin.register');
+Route::post('user/login',[LoginController::class,'authenticate'])->name('admin.login');
 Route::post('request/store',[RequestController::class,'store'])->name('request.store');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('request/search/',[RequestController::class,'searchReport'])->name('request.search');
