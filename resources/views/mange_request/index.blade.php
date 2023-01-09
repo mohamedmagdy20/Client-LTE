@@ -24,6 +24,7 @@
             <th>Report Number</th>
             <th>Type</th>
             <th>Title</th>
+            <th>Closed Date</th>
             <th>Status</th>
             <th>Operations</th>
 
@@ -44,9 +45,25 @@
                       <td><span class="badge bg-danger">{{$request->type}}</span></td>
                     @endif
                     <td>{{$request->title}}</td>
-                    <td>{{$request->status}}</td>
-                    <th>
+                    @if ($request->closed_date != null)
+                        <td>{{$request->closed_date}}</td>
+                    @else
+                        <td><span class="badge bg-success">Still Open</span></td>
+                    @endif
+
+                    @if ($request->status =='Open')
+                    <td><span class="badge bg-success">{{$request->status}}</span></td>                   
+                    @else
+                    <td><span class="badge bg-dark">{{$request->status}}</span></td>                   
+
+                    @endif
+                    <th class="p-1">
                         <a href="{{route('manage.request.show',$request->id)}}" class="btn btn-warning text-white"><i class="fa fa-eye"></i></a>
+                        @if ($request->status == 'Closed')
+                            <a href="{{route('request.open',$request->id)}}" class="btn btn-dark"><i class="fa fa-door-open"></i></a>
+                       @else
+                            <a href="{{route('request.close',$request->id)}}" class="btn btn-dark"><i class="fa fa-lock"></i></a>
+                        @endif
                     </th>
                 </tr>    
             @endforeach

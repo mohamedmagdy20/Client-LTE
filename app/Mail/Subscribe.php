@@ -15,16 +15,19 @@ class Subscribe extends Mailable
     public $email;
     public $student;
     public $code;
+    public $stdcode;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($email,$student,$code)
+    public function __construct($email,$student,$code,$stdcode)
     {
         $this->email = $email;
         $this->student =$student;
         $this->code  = $code;
+        $this->stdcode =$stdcode;
+
     }
     /**
      * Build the message.
@@ -36,7 +39,8 @@ class Subscribe extends Mailable
         return $this->subject('Thank you for subscribing to our newsletter')
         ->markdown('emails.subscribers',[
             'student'=>$this->student,
-            'code'=>$this->code
+            'code'=>$this->code,
+            'stdcode'=>$this->stdcode
         ]);
     }
 }

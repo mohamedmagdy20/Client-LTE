@@ -39,6 +39,36 @@ class MangeRequestController extends Controller
         }
     }
 
+    public function open($id)
+    {
+        $request = Requests::find($id);
+        if($request)
+        {
+            $request->status = 'Open';
+            $request->save();
+            return back()->with('success', 'Repsponce Opened');
+
+        }else{
+            return back()->with('error', 'Error');
+        }
+    }
+
+
+    public function close($id)
+    {
+        $request = Requests::find($id);
+        if($request)
+        {
+            $request->status = 'Closed';
+            $request->save();
+            return back()->with('success', 'Repsponce Closed');
+
+
+        }else{
+            return back()->with('error', 'Error');
+        }
+    }
+
     public function makeResponce(Request $request ,$id)
     {
         // return $request->all();

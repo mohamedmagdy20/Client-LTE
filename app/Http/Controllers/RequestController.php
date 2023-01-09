@@ -42,7 +42,7 @@ class RequestController extends Controller
                 $request = Requests::create($allData);
                 if($request)
                 {
-                    Mail::to($email)->send(new Subscribe($email,$request->student_name,$request->report_number));
+                    Mail::to($email)->send(new Subscribe($email,$request->student_name,$request->report_number,$request->code));
                     return back()->with('success', 'Report Submited .. Check your Email');
                 }else{
                     return back()->with('error', 'Error');

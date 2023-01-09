@@ -36,6 +36,9 @@ Route::middleware(['auth'])->prefix('dashboard')->group(function(){
     Route::get('request/show/{id}',[MangeRequestController::class,'show'])->name('manage.request.show');
     Route::get('responce/create/{id}',[MangeRequestController::class,'createRepsonce'])->name('responce.create');
     Route::post('reponce/add/{id}',[MangeRequestController::class,'makeResponce'])->name('responce.add');
+    Route::get('request/open/{id}',[MangeRequestController::class,'open'])->name('request.open');
+    Route::get('request/closed/{id}',[MangeRequestController::class,'close'])->name('request.close');
+
 
 });
 Auth::routes();

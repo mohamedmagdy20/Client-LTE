@@ -8,7 +8,7 @@
           <p class="card-text">{{$request->message}}</p>
           <div class="d-flex m-1">
             <a href="{{route('responce.create',$request->id)}}" class="btn btn-primary">Add Responce</a>
-            <a href="{{route('home')}}" class="btn btn-secondary  ml-1">Back</a>
+            <a href="{{route('manage.request.index')}}" class="btn btn-secondary  ml-1">Back</a>
           </div>
 
         </div>
