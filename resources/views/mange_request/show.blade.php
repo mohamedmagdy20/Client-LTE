@@ -7,7 +7,9 @@
           <h3 class="text-center">{{$request->title}}</h3>
           <p class="card-text">{{$request->message}}</p>
           <div class="d-flex m-1">
-            <a href="{{route('responce.create',$request->id)}}" class="btn btn-primary">Add Responce</a>
+            @if ($request->status == 'Open')
+              <a href="{{route('responce.create',$request->id)}}" class="btn btn-primary">Add Responce</a>
+            @endif
             <a href="{{route('manage.request.index')}}" class="btn btn-secondary  ml-1">Back</a>
           </div>
 
